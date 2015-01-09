@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.full-width {
+  max-width: 1000px;
+  border: 1px solid grey;
+}

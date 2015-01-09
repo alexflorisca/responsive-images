@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Responsive Images Test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <script src="picturefill.js" async></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="rimage.js"></script>
+  </head>
+  <body>
+    <section class="full-width">
+      <img 
+        srcset="img/optimised/lights-xlarge.jpg 2000w,
+                img/optimised/lights-large.jpg 1440w,
+                img/optimised/lights-medium.jpg 960w,
+                img/optimised/lights-small.jpg 480w"
+        src="img/optimised/lights-medium.jpg" 
+        alt="Northern Lights">
+
+
+      <picture>
+        <source srcset="img/optimised/lights-xlarge.jpg 2000w,
+                        img/optimised/lights-large.jpg 1440w,
+                        img/optimised/lights-medium.jpg 960w,
+                        img/optimised/lights-small.jpg 480w">
+
+        <img src="img/optimised/lights-medium.jpg" 
+           alt="Northern Lights">
+      </picture> 
+
+
+      <!-- Ideal markup. use a javascript function to create the full responsive markup -->
+      <img data-responsive data-src="img/optimised/lights-small.jpg" data-sizes="100, 50, 100" alt="Alt text here">
+    </section>
+  </body>
+</html>
