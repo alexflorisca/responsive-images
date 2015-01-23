@@ -12,6 +12,7 @@
     "grunt-newer": "^1.0.0",
     "grunt-responsive-images": "^0.1.4",
     "grunt-shell": "~0.7.0",
+    "grunt-webp": "0.0.4",
     "grunt-yslow": "0.0.4"
   }
 }
