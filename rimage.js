@@ -18,7 +18,7 @@
 var rimage = (function($) {
 
   var options = {
-    imgFolder: 'img/optimised',
+    imgFolder: 'img',
     imgWidths: {
       small: '480',
       medium: '960',
@@ -56,8 +56,9 @@ var rimage = (function($) {
   /*
     Return a string for the srcset attribute on the img element
    */
-  var _getSrcsetAttr = function($img, file) {
+  var _getSrcsetAttr = function(file) {
     var srcset = "";
+    
     for(var width in options.imgWidths) {
       if(options.imgWidths.hasOwnProperty(width)) {
         srcset += options.imgFolder + "/" + file.name + "-" + width + "." + file.type + " " + options.imgWidths[width] + "w,";
@@ -67,7 +68,6 @@ var rimage = (function($) {
 
     return srcset;
   };
-
 
 
 
@@ -90,10 +90,12 @@ var rimage = (function($) {
         var $img = $(this);
 
         // Get the filename from the data-src attribute
-        var file = _getFilename($img.attr('data-src'));
+        var file = _getFilename($img.attr('src'));
+        console.log(file);
 
-        $img.prop('src', file.path)
-            .prop('srcset', _getSrcsetAttr($img, file))
+        $img
+            .prop('srcset', _getSrcsetAttr(file))
+            .prop('src', file.path)
             .prop('sizes', _getSizesAttr($img))
             .removeAttr('data-src')
             .removeAttr('data-sizes');

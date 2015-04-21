@@ -32,20 +32,47 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'img/originals',
           src: ['**/*.{png,jpg,gif}'],
-          dest: 'img/optimised'
+          dest: 'public/img'
+        }]
+      }
+    },
+
+    // awesome_responsive_images: {
+    //   options: {
+    //     mediaQueries: [480, 768, 1024]
+    //   }
+    // },
+
+    responsive_images_extender: {
+      target: {
+        options: {},
+        files: [{
+          expand: true,
+          src: ['**/*.html'],
+          cwd: 'public/',
+          dest: 'public/'
         }]
       }
     },
 
     watch: {
-      files: ['Gruntfile.js', 'img/originals'],
-      tasks: ['responsive_images']
+      otimiseImages: {
+        files: ['Gruntfile.js', 'img/originals'],
+        tasks: ['responsive_images',]
+      },
+
+      responsifyImages: {
+        files: ['**/*.html'],
+        tasks: ['responsive_images_extender']
+      }
+
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-responsive-images');
+  grunt.loadNpmTasks('grunt-responsive-images-extender');
 
-  grunt.registerTask('default', ['responsive_images', 'watch']);
+  grunt.registerTask('default', ['responsive_images', 'responsive_images_extender', 'watch']);
 
 };
