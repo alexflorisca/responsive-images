@@ -56,12 +56,11 @@ module.exports = function(grunt) {
         files: ['Gruntfile.js', 'img/originals'],
         tasks: ['responsive_images',]
       },
-
+      
       responsifyImages: {
         files: ['**/*.html'],
         tasks: ['rimage']
       }
-
     }
   });
 
